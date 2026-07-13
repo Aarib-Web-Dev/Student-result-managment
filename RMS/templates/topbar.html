@@ -1,0 +1,20 @@
+ <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#"><i class="fa-solid fa-school me-1"></i>SRMS | Admin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end"  id="navbarNav">
+      <ul class="navbar-nav text-uppercase gap-3">
+        <li class="nav-item">
+          <a class="btn btn-outline-warning" aria-current="page" href="{%url 'index' %}"><i class="fas fa-home"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-danger" href="{% url 'logout'%}"><i class="fas fa-sign-out"></i>LogOut</a>
+        </li>
+       
+        
+      </ul>
+    </div>
+  </div>
+</nav>

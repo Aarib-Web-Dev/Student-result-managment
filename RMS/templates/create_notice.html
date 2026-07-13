@@ -1,0 +1,33 @@
+{% extends "admin_base.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container">
+    <h2 class="mb-4"><i class="fa fa-bullhorn text-info"></i> Add Notice</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{ m.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                {{ m }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" required placeholder="Enter notice title">
+        </div>
+
+        <div class="mb-3">
+            <label for="detail" class="form-label">Details</label>
+            <textarea class="form-control" id="detail" name="detail" rows="5" required placeholder="Enter notice details"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-info"><i class="fa-regular fa-circle-check me-2"></i>Submit</button>
+    </form>
+</div>
+{% endblock main %}

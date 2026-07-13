@@ -1,0 +1,48 @@
+{% extends "admin_base.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container">
+    <h2 class="mb-4"><i class="fa fa-clipboard-list text-info"></i> Create Result</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{ m.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                {{ m }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="student" class="form-label">Student</label>
+            <select class="form-select" id="student" name="student" required>
+                <option value="">Select student</option>
+                {% for student in students %}
+                    <option value="{{ student.id }}">{{ student.name }} - {{ student.roll_id }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <select class="form-select" id="subject" name="subject" required>
+                <option value="">Select subject</option>
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.subject_name }} ({{ subject.subject_code }})</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="marks" class="form-label">Marks</label>
+            <input type="number" class="form-control" id="marks" name="marks" required placeholder="Enter marks">
+        </div>
+
+        <button type="submit" class="btn btn-info"><i class="fa-regular fa-circle-check me-2"></i>Submit</button>
+    </form>
+</div>
+{% endblock main %}

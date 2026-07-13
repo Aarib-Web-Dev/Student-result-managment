@@ -1,0 +1,61 @@
+{% extends "admin_base.html" %}
+{% load static %}
+
+{% block main %}
+
+<div class="container ">
+    <h2 class="mb-4 text-center"><i class="fa fa-book me-1" ></i>Manage Subjects</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{m.tags}}{% endif %} alert-dismissible fade show" rolev= alert>
+            
+                {{m}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
+
+        {% endfor %}
+    {% endif %}
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>S.NO</th>
+                <th>Subject Name</th>
+                <th>Subject Code</th>
+                <th>Creation Date</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in subjects %}
+            
+            
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{s.subject_name}}</td>
+                <td>{{s.subject_code}}</td>
+                <td>{{s.creation_date}}</td>
+                <td>
+                    <a href="{% url 'edit_subject' s.id %}" class = "btn btn-info btn-sm"><i class="fas fa-edit"></i>Edit</a>
+                    <a href="?delete={{s.id}}" onclick= "return confirm('Are you sure to delete this subject?')" class = "btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Delete</a>
+                </td>
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td class ="text-center" colspan="6">
+                    no subject found 
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+</div>
+
+{% endblock main %}

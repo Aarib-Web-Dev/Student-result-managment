@@ -1,0 +1,50 @@
+{% extends "admin_base.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container">
+    <h2 class="mb-4"><i class="fa fa-user-graduate text-info"></i> Manage Students</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{ m.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                {{ m }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>S.NO</th>
+                <th>Name</th>
+                <th>Roll ID</th>
+                <th>Email</th>
+                <th>Class</th>
+                <th>Creation Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.roll_id }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.student_class }}</td>
+                <td>{{ student.reg_date }}</td>
+                <td>
+                    <a href="?delete={{ student.id }}" onclick="return confirm('Delete this student?')" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td class="text-center" colspan="7">No students found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock main %}

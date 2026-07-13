@@ -1,0 +1,46 @@
+{% extends "admin_base.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container">
+    <h2 class="mb-4"><i class="fa fa-layer-group text-info"></i> Manage Subject Combinations</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{ m.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                {{ m }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>S.NO</th>
+                <th>Class</th>
+                <th>Subject</th>
+                <th>Creation Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for combo in combinations %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ combo.student_class }}</td>
+                <td>{{ combo.subject }}</td>
+                <td>{{ combo.creation_date }}</td>
+                <td>
+                    <a href="?delete={{ combo.id }}" onclick="return confirm('Delete this combination?')" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td class="text-center" colspan="5">No combinations found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock main %}

@@ -1,0 +1,43 @@
+ {% extends 'base.html' %}
+   
+   
+   
+   
+   {% block content %}
+   <header class="bg-dark text-light p-5">
+       <div class="container text-center">
+            <h1 class="display-4 fw-bold"> Student Result Managment System</h>
+            <p class="lead mt-4">Manage and view result efficiently</p>    
+        </div>
+    </header>
+
+    <section class=" py-5">
+        <div class="container ">
+            <h2 class="text-center text-danger">
+                <i class="fa fa-bullhorn text-primary"></i>Notice Board ! 
+            </h2>
+            
+            <div class="container border p-3 rounded bg-light">
+             <marquee  direction="up" scrollamount="2" onmouseover="this.stop()" onmouseout="this.start()">
+                <ul class="list-unstyled">
+
+                    <li class="mb-2 ">
+                        <a href="notice.html" class="text-dark" target="_blank">
+                            <i class="fa fa-angle-right"></i>Notice Title
+                </a></li>
+                <li class="mb-2">
+                    <a href="notice.html"class="text-dark" target="_blank">
+                    <i class="fa fa-angle-right"></i>Notice Title
+                </a></li>
+                <li class="mb-2">
+                    <a href="notice.html"class="text-dark">
+                    <i class="fa fa-angle-right"></i>Notice Title
+                </a></li>
+            </ul>
+        </marquee>
+            </div>
+        </div>
+    </section>
+
+   
+{% endblock content %}

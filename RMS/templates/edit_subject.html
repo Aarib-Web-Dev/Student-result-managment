@@ -1,0 +1,42 @@
+{% extends "admin_base.html" %}
+{% load static %}
+
+{% block main %}
+
+<div class="container">
+    <h2 class="mb-4"><i class="fa fa-plus-circle text-info"></i>Edit Subjects</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{m.tags}}{% endif %} alert-dismissible fade show" rolev= alert>
+            
+                {{m}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
+
+        {% endfor %}
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token%}
+
+        <div class="mb-3">
+            <label for="subjectname" class="form-label">Subject Name</label>
+            <input type="text" class="form-control" id="subjectname" name="subjectname" required placeholder="Enter Subject Name" value = "{{ subject_obj.subject_name }}">
+            <small class="text-muted">eg:- Mathematics, Science, Social Studies ..... </small>
+        </div>
+
+        <div class="mb-3">
+            <label for="subjectcode" class="form-label">Subject Code</label>
+            <input type="text" class="form-control" id="subjectcode" name="subjectcode" required placeholder="Enter Subject Code" value = "{{ subject_obj.subject_code }}">
+            <small class="text-muted">eg:- MATH, SCI, SS ..... </small>
+        </div>
+
+
+        <button type="submit" class="btn btn-info"><i class="fa-regular fa-circle-check me-2"></i>Submit</button>
+
+    </form>
+</div>
+
+{% endblock main %}

@@ -1,0 +1,175 @@
+{% load static %}
+
+
+<style>
+    .sidebar{
+        
+        min-height: 100vh;
+    }
+    .sidebar .nav-link{
+        color:white;
+
+    }
+    .sidebar .nav-link:hover{
+        color:#ffc107;
+        background-color: #343a40;
+    }
+</style>
+
+<nav class="col-md-3 sidebar collapse d-md-block pt-3 bg-dark">
+    <div class="text-white text-center">
+        <img src="{% static 'images/admin.jpg' %}"alt=""
+         class = "rounded-circle mb-2" 
+         height = "90" 
+         width ="90">
+        <h4>Admin</h4>
+    </div>
+
+    <ul class ="nav flex-column">
+        <li class= "nav-item">
+            <a href="{% url 'admin_dashboard' %}" class="nav-link ">
+                <i class= "fas fa-tachometer-alt me-2"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class= "nav-item">
+            <a href="#classesMenu" data-bs-toggle ="collapse" class="nav-link ">
+                <i class= "fas fa-chalkboard me-2"></i>
+                Classes <i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <div id="classesMenu" class="collapse">
+                <ul class="nav flex-column ms-3">
+                  <li class= "nav-item">
+                   <a href="{% url 'create_class' %}" class="nav-link ">
+                    <i class= "fas fa-plus me-2"></i>
+                      Create Class
+                    </a>
+                  </li>
+                  <li class= "nav-item">
+                   <a href="{% url 'manage_class' %}" class="nav-link ">
+                    <i class= "fas fa-table me-2"></i>
+                      Edit Class
+                    </a>
+                  </li> 
+                </ul>
+            </div>
+        </li>
+
+        <li class= "nav-item">
+            <a href="#subjectMenu" data-bs-toggle ="collapse" class="nav-link ">
+                <i class= "fas fa-book me-2"></i>
+                Subjects <i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <div id="subjectMenu" class="collapse">
+                <ul class="nav flex-column ms-3">
+                  <li class= "nav-item">
+                   <a href="{% url 'create_subject' %}" class="nav-link ">
+                    <i class= "fas fa-plus me-2"></i>
+                      Create Subject
+                    </a>
+                  </li>
+                  <li class= "nav-item">
+                   <a href="{% url 'manage_subject' %}" class="nav-link ">
+                    <i class= "fas fa-list me-2"></i>
+                      Manage Subjects
+                    </a>
+                  </li> 
+                   </li>
+                  <li class= "nav-item">
+                   <a href="{% url 'create_subject_combination' %}" class="nav-link ">
+                    <i class= "fas fa-table me-2"></i>
+                      Add Subject Combination
+                    </a>
+                  </li> 
+                   </li>
+                  <li class= "nav-item">
+                   <a href="{% url 'manage_subject_combination' %}" class="nav-link ">
+                    <i class= "fas fa-layer-group me-2"></i>
+                      Manage Subject Combination
+                    </a>
+                </li> 
+            </ul>
+        </div>
+    </li>
+
+            <li class= "nav-item">
+            <a href="#stdMenu" data-bs-toggle ="collapse" class="nav-link ">
+                <i class= "fas fa-user-graduate me-2"></i>
+                Student<i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <div id="stdMenu" class="collapse">
+                <ul class="nav flex-column ms-3">
+                  <li class= "nav-item">
+                   <a href="{% url 'create_student' %}" class="nav-link ">
+                    <i class= "fas fa-plus me-2"></i>
+                      Add students
+                    </a>
+                  </li>
+                  <li class= "nav-item">
+                   <a href="{% url 'manage_student' %}" class="nav-link ">
+                    <i class= "fas fa-list me-2"></i>
+                      Manage Students
+                    </a>
+                  </li> 
+                </ul>
+            </div>
+        </li>
+
+
+        <li class= "nav-item">
+            <a href="#resultMenu" data-bs-toggle ="collapse" class="nav-link ">
+                <i class="fa-solid fa-clipboard-list me-2"></i>
+                Results<i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <div id="resultMenu" class="collapse">
+                <ul class="nav flex-column ms-3">
+                  <li class= "nav-item">
+                   <a href="{% url 'create_result' %}" class="nav-link ">
+                    <i class= "fas fa-plus me-2"></i>
+                      Create Results
+                    </a>
+                  </li>
+                  <li class= "nav-item">
+                   <a href="{% url 'manage_result' %}" class="nav-link ">
+                    <i class= "fas fa-list me-2"></i>
+                      Manage Result 
+                    </a>
+                  </li> 
+                </ul>
+            </div>
+        </li>
+
+
+        <li class= "nav-item">
+            <a href="#noticeMenu" data-bs-toggle ="collapse" class="nav-link ">
+                <i class= "fas fa-bullhorn me-2"></i>
+                Notice<i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <div id="noticeMenu" class="collapse">
+                <ul class="nav flex-column ms-3">
+                  <li class= "nav-item">
+                   <a href="{% url 'create_notice' %}" class="nav-link ">
+                    <i class= "fas fa-plus me-2"></i>
+                      Add Notice
+                    </a>
+                  </li>
+                  <li class= "nav-item">
+                   <a href="{% url 'manage_notice' %}" class="nav-link ">
+                    <i class= "fas fa-list me-2"></i>
+                      Manage Notice 
+                    </a>
+                  </li> 
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'change_password' %}" class="nav-link">
+                <i class="fa-solid fa-lock"></i>
+                Change Password
+            </a>
+        </li>
+        
+    </ul>
+
+</nav>

@@ -1,0 +1,48 @@
+{% extends "admin_base.html" %}
+{% load static %}
+
+{% block main %}
+
+<div class="container">
+    <h2 class="mb-4"><i class="fa fa-plus-circle text-info"></i>Edit Student Class</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{m.tags}}{% endif %} alert-dismissible fade show" rolev= alert>
+            
+                {{m}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
+
+        {% endfor %}
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token%}
+
+        <div class="mb-3">
+            <label for="classname" class="form-label">Class Name</label>
+            <input type="text" class="form-control" id="classname" name="classname" required placeholder="Enter Class Name" value = "{{ class_obj.class_name }}">
+            <small class="text-muted">eg:- first. second, third ..... </small>
+        </div>
+
+        <div class="mb-3">
+            <label for="classnumeric" class="form-label">Class No</label>
+            <input type="text" class="form-control" id="classnumeric" name="classnumeric" required placeholder="Enter Class No" value = "{{ class_obj.class_numeric }}  ">
+            <small class="text-muted">eg:- 1, 2, 3 ..... </small>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="section" class="form-label">Class Section</label>
+            <input type="text" class="form-control" id="section" name="section" required placeholder="Enter Class Section" value = "{{ class_obj.section }}">
+            <small class="text-muted">eg:- a, b, c ..... </small>
+        </div>
+
+        <button type="submit" class="btn btn-info"><i class="fa-regular fa-circle-check me-2"></i>Submit</button>
+
+    </form>
+</div>
+
+{% endblock main %}

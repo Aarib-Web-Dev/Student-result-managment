@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "**/templates/**/*.html": "django-html",
+    "**/emails/**/*.html": "html",
+    "**/static/**/*.html": "html"
+  },
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  }
+}

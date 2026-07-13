@@ -1,0 +1,63 @@
+{% extends "admin_base.html" %}
+{% load static %}
+
+{% block main %}
+
+<div class="container ">
+    <h2 class="mb-4 text-center"><i class="fa fa-chalkboard me-1" ></i>Manage Classes</h2>
+
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{m.tags}}{% endif %} alert-dismissible fade show" rolev= alert>
+            
+                {{m}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
+
+        {% endfor %}
+    {% endif %}
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>S.NO</th>
+                <th>Class Name</th>
+                <th>Class Numeric</th>
+                <th>Section</th>
+                <th>Creation Date</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in classes %}
+            
+            
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{c.class_name}}</td>
+                <td>{{c.class_numeric}}</td>
+                <td>{{c.section}}</td>
+                <td>{{c.creation_date}}</td>
+                <td>
+                    <a href="{% url 'edit_class' c.id %}" class = "btn btn-info btn-sm"><i class="fas fa-edit"></i>Edit</a>
+                    <a href="?delete={{c.id}}" onclick= "return confirm('Are you sure to delete this class?')" class = "btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Delete</a>
+                </td>
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td class ="text-center" colspan="6">
+                    no class found 
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+</div>
+
+{% endblock main %}
